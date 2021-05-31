@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 function determineDatabaseURL() {
   if (process.env.ENVIRONMENT === "production") {
@@ -24,6 +25,7 @@ db.on("error", (error) => {
 
 db.once("open", () => console.log("Connected to DataBase"));
 
+app.use(cors());
 app.use(express.json());
 
 const actingCreditsRoutes = require("./routes/acting-credits");
