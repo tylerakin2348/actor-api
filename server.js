@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
+const PORT = process.env.PORT || 3000;
 
 function determineDatabaseURL() {
   if (process.env.ENVIRONMENT === "production") {
@@ -32,6 +33,6 @@ const actingCreditsRoutes = require("./routes/acting-credits");
 
 app.use("/api/v1/acting-credits", actingCreditsRoutes);
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log("hello app");
 });
