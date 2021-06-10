@@ -25,7 +25,6 @@ db.on("error", (error) => {
 });
 
 db.once("open", () => console.log("Connected to DataBase"));
-
 app.use(cors());
 app.use(express.json());
 
