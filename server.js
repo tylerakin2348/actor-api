@@ -11,7 +11,6 @@ function determineDatabaseURL() {
   }
   return process.env.DATABASE_URL_DEV;
 }
-
 const properDatabaseURL = determineDatabaseURL();
 
 mongoose.connect(properDatabaseURL, {
