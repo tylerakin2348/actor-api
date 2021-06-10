@@ -17,4 +17,15 @@ Content-Type: application/json
 
 ###
 
+POST https://vast-fortress-04957.herokuapp.com/api/v1/acting-credits
+Content-Type: application/json
+
+{
+    "role": "Test",
+    "company":"CenterSfgftage",
+    "show":"HairSpray"
+}
+
+###
+
 DELETE http://localhost:3000/api/v1/acting-credits/60b4f296307467376c29df8d
