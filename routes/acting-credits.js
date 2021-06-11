@@ -18,14 +18,19 @@ router.get("/:id", getActingCredit, (req, res) => {
 
 router.post("/", async (req, res) => {
   const actingCredit = new ActingCredit({
-    role: req.body.role,
-    company: req.body.company,
-    show: req.body.show,
+    show_title: req.body.show_title,
+    show_role: req.body.show_role,
+    show_director_name: req.body.show_director_name,
+    show_company_name: req.body.show_company_name,
+    // role: req.body.role,
+    // company: req.body.company,
+    // show: req.body.show,
   });
 
   try {
     const newActingCredit = await actingCredit.save();
     res.status(201).json(newActingCredit);
+    console.log("in try");
   } catch (err) {
     res.status(400).json({ message: err.message });
   }

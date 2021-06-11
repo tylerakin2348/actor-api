@@ -1,15 +1,19 @@
 const mongoose = require("mongoose");
 
 const actingCreditSchema = new mongoose.Schema({
-  role: {
+  show_role: {
     type: String,
     required: true,
   },
-  company: {
+  show_company_name: {
     type: String,
     required: true,
   },
-  show: {
+  show_director_name: {
+    type: String,
+    required: true,
+  },
+  show_title: {
     type: String,
     required: true,
   },

@@ -25,7 +25,13 @@ db.on("error", (error) => {
 });
 
 db.once("open", () => console.log("Connected to DataBase"));
-app.use(cors());
+
+var corsOptions = {
+  origin: "http://localhost:8080",
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const actingCreditsRoutes = require("./routes/acting-credits");
