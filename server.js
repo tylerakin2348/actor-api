@@ -35,8 +35,11 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 const actingCreditsRoutes = require("./routes/acting-credits");
+const eventRoutes = require("./routes/events");
 
 app.use("/api/v1/acting-credits", actingCreditsRoutes);
+
+app.use("/api/v1/events", eventRoutes);
 
 app.listen(PORT, () => {
   console.log("hello app");
