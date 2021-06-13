@@ -28,4 +28,5 @@ Content-Type: application/json
 }
 
 ###
+
 DELETE http://localhost:3000/api/v1/acting-credits/60b4f296307467376c29df8d
