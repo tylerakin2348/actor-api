@@ -1,5 +1,4 @@
 const express = require("express");
-const actingCredit = require("../models/acting-credit");
 const router = express.Router();
 const ActingCredit = require("../models/acting-credit");
 

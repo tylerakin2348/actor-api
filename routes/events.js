@@ -1,30 +1,30 @@
 const express = require("express");
 const router = express.Router();
-const Event = require("../models/event");
+const ActingEvent = require("../models/event");
 
 router.get("/", async (req, res) => {
   try {
-    const Events = await Event.find();
-    res.json(Events);
+    const ActingEvents = await ActingEvent.find();
+    res.json(ActingEvents);
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
 });
 
-router.get("/:id", getEvent, (req, res) => {
+router.get("/:id", getActingEvent, (req, res) => {
   res.send(res.event);
 });
 
 router.post("/", async (req, res) => {
-  const Event = new Event({
+  const actingEvent = new ActingEvent({
     event_name: req.body.event_name,
     event_company: req.body.event_company,
     event_url: req.body.event_url,
   });
 
   try {
-    const newEvent = await Event.save();
-    res.status(201).json(newEvent);
+    const newActingEvent = await actingEvent.save();
+    res.status(201).json(newActingEvent);
     console.log("in try");
   } catch (err) {
     res.status(400).json({ message: err.message });
@@ -37,7 +37,7 @@ router.patch("/:id", (req, res) => {
   }
 });
 
-router.delete("/:id", getEvent, async (req, res) => {
+router.delete("/:id", getActingEvent, async (req, res) => {
   try {
     await res.event.remove();
     res.json({ message: "Deleted Subscriber" });
@@ -46,10 +46,10 @@ router.delete("/:id", getEvent, async (req, res) => {
   }
 });
 
-async function getEvent(req, res, next) {
+async function getActingEvent(req, res, next) {
   let event;
   try {
-    event = await Event.findById(req.params.id);
+    event = await ActingEvent.findById(req.params.id);
 
     if (event === null) {
       return res.status(404).json({ message: "Cannot Find Event" });

@@ -4,6 +4,7 @@ const app = express();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const PORT = process.env.PORT || 3000;
+const ACTOR_API_VERSION = process.env.ACTOR_API_VERSION || "v1";
 
 function determineDatabaseURL() {
   if (process.env.ENVIRONMENT === "production") {
@@ -37,9 +38,9 @@ app.use(express.json());
 const actingCreditsRoutes = require("./routes/acting-credits");
 const eventRoutes = require("./routes/events");
 
-app.use("/api/v1/acting-credits", actingCreditsRoutes);
+app.use(`/api/${ACTOR_API_VERSION}/acting-credits`, actingCreditsRoutes);
 
-app.use("/api/v1/events", eventRoutes);
+app.use(`/api/${ACTOR_API_VERSION}/events`, eventRoutes);
 
 app.listen(PORT, () => {
   console.log("hello app");

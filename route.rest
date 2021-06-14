@@ -30,3 +30,17 @@ Content-Type: application/json
 ###
 
 DELETE http://localhost:3000/api/v1/acting-credits/60b4f296307467376c29df8d
+
+###
+
+POST http://localhost:3000/api/v1/events
+Content-Type: application/json
+
+{
+    "event_name": "IQ",
+    "event_company":"CenterSfgftage",
+    "event_url":"HairSpray"
+}
+
+###
+GET http://localhost:3000/api/v1/events
