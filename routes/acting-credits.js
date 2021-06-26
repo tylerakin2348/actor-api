@@ -34,6 +34,7 @@ router.post("/", async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 });
+
 router.patch("/:id", (req, res) => {
   if (req.body.role !== null) {
     res.acting_credit.role = req.body.role;
