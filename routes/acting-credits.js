@@ -4,12 +4,12 @@ const ActingCredit = require("../models/acting-credit");
 
 router.get("/", async (req, res) => {
   console.log("hello credits");
-  try {
-    const actingCredits = await ActingCredit.find();
-    res.json(actingCredits);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
+  // try {
+  //   const actingCredits = await ActingCredit.find();
+  //   res.json(actingCredits);
+  // } catch (err) {
+  //   res.status(500).json({ message: err.message });
+  // }
 });
 
 router.get("/:id", getActingCredit, (req, res) => {
