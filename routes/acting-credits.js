@@ -3,6 +3,7 @@ const router = express.Router();
 const ActingCredit = require("../models/acting-credit");
 
 router.get("/", async (req, res) => {
+  console.log("hello credits");
   try {
     const actingCredits = await ActingCredit.find();
     res.json(actingCredits);
