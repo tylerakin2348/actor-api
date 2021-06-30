@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const ActingCredit = require("../models/acting-credit");
+
 router.get("/", async (req, res) => {
   console.log("hello credits");
   // try {
@@ -14,6 +15,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", getActingCredit, (req, res) => {
   res.send(res.acting_credit);
 });
+
 router.post("/", async (req, res) => {
   const actingCredit = new ActingCredit({
     show_title: req.body.show_title,
