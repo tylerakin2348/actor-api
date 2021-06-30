@@ -10,6 +10,7 @@ router.get("/", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
 router.get("/:id", getActingCredit, (req, res) => {
   res.send(res.acting_credit);
 });
