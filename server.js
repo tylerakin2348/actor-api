@@ -28,7 +28,7 @@ db.on("error", (error) => {
 db.once("open", () => console.log("Connected to DataBase"));
 
 var corsOptions = {
-  origin: "http://localhost:8080",
+  origin: ["http://localhost:3001", "http://actor.tylerakin.com"],
   credentials: true,
 };
 
