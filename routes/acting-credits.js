@@ -42,10 +42,16 @@ router.patch("/:id", (req, res) => {
 });
 
 router.delete("/:id", getActingCredit, async (req, res) => {
+  var id = req.params.id;
+
+  
+  console.log('deleting', res)
   try {
+  console.log('in rtry t')
     await res.acting_credit.remove();
     res.json({ message: "Deleted Subscriber" });
   } catch (error) {
+  console.log('in catch t')
     res.status(500).json({ message: error.message });
   }
 });

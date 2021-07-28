@@ -37,11 +37,19 @@ app.use(express.json());
 
 const actingCreditsRoutes = require("./routes/acting-credits");
 const eventRoutes = require("./routes/events");
+const userRoutes = require("./routes/users")
 
 app.use(`/api/${ACTOR_API_VERSION}/acting-credits`, actingCreditsRoutes);
 
 app.use(`/api/${ACTOR_API_VERSION}/events`, eventRoutes);
 
+app.use(`/api/${ACTOR_API_VERSION}/users`, userRoutes);
+
+const authController = require("./auth/AuthController")
+app.use(`/api/${ACTOR_API_VERSION}/auth`, authController);
+
 app.listen(PORT, () => {
   console.log("hello app");
 });
+
+module.exports = app;
