@@ -35,9 +35,13 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.patch("/:id", (req, res) => {
-  if (req.body.role !== null) {
-    res.acting_credit.role = req.body.role;
+router.put("/:id", getActingCredit, async (req, res) => {
+  try {
+   ActingCredit.findByIdAndUpdate(req.params.id, req.body, function(err, acting_credit) {
+     res.send('updated')
+   }) 
+  } catch {
+
   }
 });
 

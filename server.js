@@ -18,6 +18,7 @@ const properDatabaseURL = determineDatabaseURL();
 mongoose.connect(properDatabaseURL, {
   useUnifiedTopology: true,
   useNewUrlParser: true,
+  useFindAndModify: false
 });
 
 const db = mongoose.connection;
