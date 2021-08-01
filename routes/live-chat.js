@@ -12,17 +12,17 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", getLiveChat, (req, res) => {
-  res.send(res.liveChat);
+  res.send(res.live_chat_message);
 });
 
 router.post("/", async (req, res) => {
-  const LiveChat = new LiveChat({
+  const liveChat = new LiveChat({
     message: req.body.message,
     message_author: req.body.message_author,
   });
 
   try {
-    const newLiveChat = await LiveChat.save();
+    const newLiveChat = await liveChat.save();
     res.status(201).json(newLiveChat);
     console.log("in try");
   } catch (err) {
@@ -42,7 +42,7 @@ router.put("/:id", getLiveChat, (req, res) => {
 
 router.delete("/:id", getLiveChat, async (req, res) => {
   try {
-    await res.liveChat.remove();
+    await res.live_chat_message.remove();
     res.json({ message: "Deleted Subscriber" });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -50,18 +50,18 @@ router.delete("/:id", getLiveChat, async (req, res) => {
 });
 
 async function getLiveChat(req, res, next) {
-  let event;
+  let live_chat_message;
   try {
-    event = await LiveChat.findById(req.params.id);
+    live_chat_message = await LiveChat.findById(req.params.id);
 
-    if (event === null) {
+    if (live_chat_message === null) {
       return res.status(404).json({ message: "Cannot Find Event" });
     }
   } catch (err) {
     return res.status(500).json({ message: err.message });
   }
 
-  res.event = event;
+  res.live_chat_message = live_chat_message;
   next();
 }
 
