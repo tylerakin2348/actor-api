@@ -39,12 +39,15 @@ app.use(express.json());
 const actingCreditsRoutes = require("./routes/acting-credits");
 const eventRoutes = require("./routes/events");
 const userRoutes = require("./routes/users")
+const liveChatRoutes = require("./routes/live-chat")
 
 app.use(`/api/${ACTOR_API_VERSION}/acting-credits`, actingCreditsRoutes);
 
 app.use(`/api/${ACTOR_API_VERSION}/events`, eventRoutes);
 
 app.use(`/api/${ACTOR_API_VERSION}/users`, userRoutes);
+
+app.use(`/api/${ACTOR_API_VERSION}/live-chat`, liveChatRoutes);
 
 const authController = require("./auth/AuthController")
 app.use(`/api/${ACTOR_API_VERSION}/auth`, authController);

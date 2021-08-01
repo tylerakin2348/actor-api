@@ -15,7 +15,8 @@ router.post('/signup', function(req, res) {
     var hashedPasswordConfirmation = bcrypt.hashSync(req.body.password_confirmation, 8);
 
     User.create({
-        name : req.body.name,
+        first_name : req.body.first_name,
+        last_name : req.body.last_name,
         email : req.body.email,
         password : hashedPassword,
         password_confirmation : hashedPasswordConfirmation,
@@ -26,7 +27,15 @@ router.post('/signup', function(req, res) {
         var token = jwt.sign({ id: user._id }, config.secret, {
         expiresIn: 86400 // expires in 24 hours
         });
-        res.status(200).send({ auth: true, token: token });
+        res.status(200).send({ 
+          auth: true, 
+          token: token, 
+          user: {
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            email: req.body.email
+          } 
+        });
     }); 
 });
 
@@ -41,7 +50,15 @@ router.post('/signin', function(req, res) {
       var token = jwt.sign({ id: user._id }, config.secret, {
         expiresIn: 86400 // expires in 24 hours
       });
-      res.status(200).send({ auth: true, token: token });
+      res.status(200).send({ 
+        auth: true, 
+        token: token, 
+        user: {
+          first_name: user.first_name,
+          last_name: user.last_name,
+          email: user.email
+        } 
+      });
     });
     
   });

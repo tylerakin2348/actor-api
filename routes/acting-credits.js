@@ -21,9 +21,6 @@ router.post("/", async (req, res) => {
     show_role: req.body.show_role,
     show_director_name: req.body.show_director_name,
     show_company_name: req.body.show_company_name,
-    // role: req.body.role,
-    // company: req.body.company,
-    // show: req.body.show,
   });
 
   try {

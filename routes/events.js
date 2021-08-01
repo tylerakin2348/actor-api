@@ -31,10 +31,14 @@ router.post("/", async (req, res) => {
   }
 });
 
-router.patch("/:id", (req, res) => {
-  if (req.body.role !== null) {
-    res.event.role = req.body.role;
-  }
+router.put("/:id", getActingEvent, (req, res) => {
+  try {
+    ActingEvent.findByIdAndUpdate(req.params.id, req.body, function(err, acting_event) {
+      res.send('updated')
+    }) 
+   } catch {
+ 
+   }
 });
 
 router.delete("/:id", getActingEvent, async (req, res) => {
