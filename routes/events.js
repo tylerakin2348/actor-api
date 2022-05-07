@@ -18,6 +18,11 @@ router.get("/:id", getActingEvent, (req, res) => {
 router.post("/", async (req, res) => {
   const actingEvent = new ActingEvent({
     event_name: req.body.event_name,
+    role: req.body.role,
+    description: req.body.description,
+    event_date: req.body.event_date,
+    start_date: req.body.start_date,
+    end_date: req.body.end_date,
     event_company: req.body.event_company,
     event_url: req.body.event_url,
   });
@@ -33,12 +38,14 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", getActingEvent, (req, res) => {
   try {
-    ActingEvent.findByIdAndUpdate(req.params.id, req.body, function(err, acting_event) {
-      res.send('updated')
-    }) 
-   } catch {
- 
-   }
+    ActingEvent.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      function (err, acting_event) {
+        res.send("updated");
+      }
+    );
+  } catch {}
 });
 
 router.delete("/:id", getActingEvent, async (req, res) => {

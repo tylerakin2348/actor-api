@@ -19,8 +19,9 @@ router.post("/", async (req, res) => {
   const actingCredit = new ActingCredit({
     show_title: req.body.show_title,
     show_role: req.body.show_role,
-    show_director_name: req.body.show_director_name,
     show_company_name: req.body.show_company_name,
+    show_director_name: req.body.show_director_name,
+    sort_order: req.body.sort_order,
   });
 
   try {
@@ -34,25 +35,26 @@ router.post("/", async (req, res) => {
 
 router.put("/:id", getActingCredit, async (req, res) => {
   try {
-   ActingCredit.findByIdAndUpdate(req.params.id, req.body, function(err, acting_credit) {
-     res.send('updated')
-   }) 
-  } catch {
-
-  }
+    ActingCredit.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      function (err, acting_credit) {
+        res.send("updated");
+      }
+    );
+  } catch {}
 });
 
 router.delete("/:id", getActingCredit, async (req, res) => {
   var id = req.params.id;
 
-  
-  console.log('deleting', res)
+  console.log("deleting", res);
   try {
-  console.log('in rtry t')
+    console.log("in rtry t");
     await res.acting_credit.remove();
     res.json({ message: "Deleted Subscriber" });
   } catch (error) {
-  console.log('in catch t')
+    console.log("in catch t");
     res.status(500).json({ message: error.message });
   }
 });
