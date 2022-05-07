@@ -30,9 +30,14 @@ db.once("open", () => console.log("Connected to DataBase"));
 
 var corsOptions = {
   origin: [
-    "http://localhost:3001",
-    "http://actor.tylerakin.com",
+    "http://localhost:3001", // actor
+    "http://localhost:3000", // developer
     "https://actor.tylerakin.com",
+    "https://www.actor.tylerakin.com",
+    "https://developer.tylerakin.com",
+    "https://www.developer.tylerakin.com",
+    "https://tylerakin.com",
+    "https://www.tylerakin.com",
   ],
   credentials: true,
 };
